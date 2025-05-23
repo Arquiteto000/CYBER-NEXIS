@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Cyber-Nexis</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Cyber-Nexis</h1>
+    <p>Protegendo a Liberdade Digital</p>
+  </header>
+  <main class="container">
+    <div class="login-container">
+      <h2>Login</h2>
+      <p>Para sua segurança user um codnome ou posedomo!</p>
+      <form id="login-form" action="login.php" method="POST">
+        <label for="username">Usuário:</label>
+        <input type="text" id="username" name="username" required aria-required="true"><br><br>
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required aria-required="true"><br><br>
+        <button type="submit">Entrar</button>
+      </form>
+      <a href="Cadastro.htm">Não tem uma conta? Cadastre-se</a>
+      <p id="login-error" class="error-message"></p>
+    </div>
+  </main>
+  <script src="login.js"></script>
+</body>
+</html>

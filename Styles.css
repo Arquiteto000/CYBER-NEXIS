@@ -1,0 +1,308 @@
+/* ==================== BASE ==================== */
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    user-select: none;         /* Padrão */
+}
+
+h1, h2, h3, h6 {
+    color: red;
+}
+
+/* ==================== HEADER ================== */
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+.logo {
+    max-width: 600px;
+    height: auto;
+}
+
+/* ==================== NAVEGAÇÃO =============== */
+.nav-links a {
+    color: red;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid red;
+    border-radius: 5px;
+    background-color: black;
+    display: inline-block;
+    margin: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: red;
+    color: black;
+    border-color: darkred;
+}
+
+/* ==================== SEÇÕES ================== */
+section {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid red;
+    border-radius: 5px;8
+    background-color: black;
+}
+
+section p {
+    margin: 0;
+    padding: 10px 0;
+}
+
+/* ==================== GALERIA ================= */
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery-image {
+    margin: 10px;
+    border: 2px solid red;
+    border-radius: 5px;
+}
+
+.image-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.image-row img {
+    max-width: 200px;
+    height: auto;
+    margin: 10px;
+}
+
+.image-gallery img {
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+}
+
+/* ==================== CHAT ==================== */
+#chat-section {
+    margin-top: 20px;
+}
+
+#messages {
+    border: 1px solid #ccc;
+    height: 400px;
+    overflow-y: scroll;
+    padding: 10px;
+    background-color: #1a1a1a;
+    color: white;
+}
+
+#message-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+#message-input,
+#file-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #555;
+    border: 1px solid red;
+    color: white;
+}
+
+/* ==================== BOTÕES ================== */
+
+/* =======/* Botões padrão */
+button,
+.next-step,
+.prev-step,
+.btn,
+.form-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover,
+.next-step:hover,
+.prev-step:hover,
+.btn:hover,
+.form-button:hover {
+    background-color: #0056b3;
+
+button.danger:hover,
+.btn.danger:hover {
+    background-color: darkred;
+}
+
+============ QUIZ ==================== */
+.quiz-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid red;
+    border-radius: 5px;
+}
+
+.step {
+    margin-bottom: 20px;
+}
+
+.question {
+    margin-bottom: 10px;
+}
+
+#timer {
+    margin-bottom: 10px;
+}
+
+#quiz-feedback {
+    margin-top: 20px;
+    display: none;
+}
+
+/* ==================== FORMULÁRIOS ============= */
+.contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.form-textarea {
+    resize: vertical;
+}
+
+.error-message,
+.erro-mensagem {
+    color: red;
+    font-size: 0.8em;
+}
+
+.erro {
+    color: red;
+    border: 1px solid red;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+/* ==================== LOGIN =================== */
+.login-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 0 10px red;
+}
+
+/* ==================== MAPA ==================== */
+#mapa-interativo {
+    height: 500px;
+}
+
+/* ============== LOGO CYBER-NEXIS ============== */
+.cyber-nexis-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.cyber-nexis-logo img {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.cyber-nexis-logo h1 {
+    color: red;
+    font-size: 2em;
+    margin: 5px 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.cyber-nexis-logo p {
+    color: white;
+    font-size: 1em;
+    margin: 5px 0;
+    font-family: 'Courier New', Courier, monospace;
+
+/* ==================== EFEITO MATRIX ==================== */
+#matrix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ==================== CONTEÚDO ==================== */
+#content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 3em;
+    color: #0f0; /* Verde neon */
+}
+
+p {
+    font-size: 1.2em;
+    color: #ccc;
+}
+
+button:hover {
+  background: darkred;
+  cursor: pointer;
+}
+
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid red;
+    outline-offset: 2px;
+}

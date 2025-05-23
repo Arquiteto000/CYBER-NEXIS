@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Talento em Tecnologia - Cyber-Nexis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Teste de Talento em Tecnologia - Cyber-Nexis</h1>
+        <p>Descubra suas habilidades e conhecimentos em tecnologia!</p>
+    </header>
+    <main>
+        <section class="container quiz-container">
+            <h2>Descubra seu Talento em Tecnologia!</h2>
+            <div id="timer">Tempo restante: <span id="time"></span></div>
+            <form id="quiz-form">
+                <div class="step" id="step1">
+                    <h3>Etapa 1</h3>
+                    <div class="question">
+                        <p>Pergunta 1: Qual é o principal protocolo de comunicação da internet?</p>
+                        <input type="radio" id="q1a" name="q1" value="a"><label for="q1a">HTTP</label><br>
+                        <input type="radio" id="q1b" name="q1" value="b"><label for="q1b">TCP/IP</label><br>
+                        <input type="radio" id="q1c" name="q1" value="c"><label for="q1c">FTP</label><br>
+                        <input type="radio" id="q1d" name="q1" value="d"><label for="q1d">SMTP</label>
+                    </div>
+                    <div class="question">
+                        <p>Pergunta 2: Qual é a linguagem de programação mais utilizada para desenvolvimento web?</p>
+                        <input type="radio" id="q2a" name="q2" value="a"><label for="q2a">Python</label><br>
+                        <input type="radio" id="q2b" name="q2" value="b"><label for="q2b">JavaScript</label><br>
+                        <input type="radio" id="q2c" name="q2" value="c"><label for="q2c">Java</label><br>
+                        <input type="radio" id="q2d" name="q2" value="d"><label for="q2d">C++</label>
+                    </div>
+                    <button type="button" class="next-step">Próximo</button>
+                    <div class="step-feedback"></div>
+                </div>
+                <div class="step" id="step2" style="display: none;">
+                    <h3>Etapa 2</h3>
+                    <div class="question">
+                        <p>Pergunta 3: O que é um firewall?</p>
+                        <input type="radio" id="q3a" name="q3" value="a"><label for="q3a">Um dispositivo que protege contra incêndios</label><br>
+                        <input type="radio" id="q3b" name="q3" value="b"><label for="q3b">Um sistema de segurança que monitora e controla o tráfego de rede</label><br>
+                        <input type="radio" id="q3c" name="q3" value="c"><label for="q3c">Um software para edição de imagens</label><br>
+                        <input type="radio" id="q3d" name="q3" value="d"><label for="q3d">Um dispositivo para proteger contra hackers</label>
+                    </div>
+                    <div class="question">
+                        <p>Pergunta 4: Qual é a função principal do DNS?</p>
+                        <input type="radio" id="q4a" name="q4" value="a"><label for="q4a">Converter nomes de domínio em endereços IP</label><br>
+                        <input type="radio" id="q4b" name="q4" value="b"><label for="q4b">Fornecer conexão à internet</label><br>
+                        <input type="radio" id="q4c" name="q4" value="c"><label for="q4c">Proteger contra ataques DDoS</label><br>
+                        <input type="radio" id="q4d" name="q4" value="d"><label for="q4d">Armazenar dados de sites</label>
+                    </div>
+                    <button type="button" class="prev-step">Anterior</button>
+                    <button type="button" class="next-step">Próximo</button>
+                    <div class="step-feedback"></div>
+                </div>
+                <div class="step" id="step3" style="display: none;">
+                    <h3>Etapa 3</h3>
+                    <div class="question">
+                        <p>Pergunta 5: O que é um endereço IP?</p>
+                        <input type="radio" id="q5a" name="q5" value="a"><label for="q5a">Um protocolo de rede</label><br>
+                        <input type="radio" id="q5b" name="q5" value="b"><label for="q5b">Um endereço único atribuído a cada dispositivo conectado à rede</label><br>
+                        <input type="radio" id="q5c" name="q5" value="c"><label for="q5c">Um tipo de firewall</label><br>
+                        <input type="radio" id="q5d" name="q5" value="d"><label for="q5d">Um software de segurança</label>
+                    </div>
+                    <div class="question">
+                        <p>Pergunta 6: Qual é a principal função de um servidor web?</p>
+                        <input type="radio" id="q6a" name="q6" value="a"><label for="q6a">Armazenar arquivos</label><br>
+                        <input type="radio" id="q6b" name="q6" value="b"><label for="q6b">Enviar e receber e-mails</label><br>
+                        <input type="radio" id="q6c" name="q6" value="c"><label for="q6c">Servir conteúdo da web para os usuários</label><br>
+                        <input type="radio" id="q6d" name="q6" value="d"><label for="q6d">Monitorar tráfego de rede</label>
+                    </div>
+                    <button type="button" class="prev-step">Anterior</button>
+                    <button type="button" class="next-step">Próximo</button>
+                    <div class="step-feedback"></div>
+                </div>
+                <div class="step" id="step4" style="display: none;">
+                    <h3>Etapa 4</h3>
+                    <div class="question">
+                        <p>Pergunta 7: Qual a função do HTTPS em um site?</p>
+                        <input type="radio" id="q7a" name="q7" value="a"><label for="q7a">Aumentar a velocidade de carregamento do site</label><br>
+                        <input type="radio" id="q7b" name="q7" value="b"><label for="q7b">Criptografar a comunicação entre o navegador e o servidor</label><br>
+                        <input type="radio" id="q7c" name="q7" value="c"><label

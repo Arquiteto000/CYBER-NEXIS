@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Entre em contato com a Cyber-Nexis">
+  <meta name="keywords" content="contato, Cyber-Nexis, suporte, ajuda, feedback">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Cyber-Nexis">
+  <title>Contato - Cyber-Nexis</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .alert {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 5px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .alert-sucesso {
+      background-color: #28a745;
+      color: white;
+    }
+    .alert-erro {
+      background-color: #dc3545;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <img src="Imagem/Logotipo.jpg" alt="Logotipo da Cyber-Nexis" class="logo">
+      <h1>Cyber-Nexis</h1>
+      <p>Protegendo a Liberdade Digital</p>
+      <nav class="nav-links-container">
+        <div class="nav-links">
+          <a href="index.html">Página Inicial</a>
+          <a href="serviços.html">Serviços</a>
+          <a href="recrutamento.html">Recrutamento</a>
+          <a href="noticias.html">Notícias</a>
+          <a href="quiz.html">Teste Quiz</a>
+          <a href="contato.html">Contatos</a>
+          <a href="regras.html">Regras da Organização</a>
+          <a href="chat.html">Chat de Conversas</a>
+        </div>
+        <select onchange="changeLanguage(this.value)">
+          <option value="pt-BR">Português</option>
+          <option value="en-US">English</option>
+          <option value="es-ES">Español</option>
+        </select>
+      </nav>
+    </div>
+  </header>
+
+  <section class="container section">
+    <h2>Entre em contato</h2>
+    <p>Entre em contato conosco preenchendo o formulário abaixo.</p>
+    <form id="contact-form" class="contact-form">
+      <div class="form-group">
+        <label for="nome" class="form-label">Nome:</label>
+        <input type="text" id="nome" name="nome" placeholder="Seu Nome" required class="form-input">
+        <span id="nome-erro" class="error-message"></span>
+      </div>
+      <div class="form-group">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Seu Gmail" required class="form-input">
+        <span id="email-erro" class="error-message"></span>
+      </div>
+      <div class="form-group">
+        <label for="mensagem" class="form-label">Mensagem:</label>
+        <textarea id="mensagem" name="mensagem" placeholder="Sua Mensagem" rows="5" required class="form-textarea"></textarea>
+        <span id="mensagem-erro" class="error-message"></span>
+      </div>
+      <button type="submit" class="form-button">Enviar Mensagem</button>
+      <div id="resposta"></div>
+    </form>
+  </section>
+  
+     <section class="container section">
+    <h2>Sinais nas Sombras Digitais</h2>
+    <div class="image-row">
+        <a href="#"><img src="Imagem/facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="Imagem/images.png" alt="Twitter"></a>
+        <a href="#"><img src="Imagem/Instagram.jpeg" alt="LinkedIn"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const form = event.target;
+      const formData = new FormData(form);
+      const resposta = document.getElementById("resposta");
+      resposta.innerHTML = ""; // limpa mensagens anteriores
+
+      fetch("enviar-contato.php", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        const div = document.createElement("div");
+        div.classList.add("alert");
+        div.classList.add(data.status === "sucesso" ? "alert-sucesso" : "alert-erro");
+        div.textContent = data.mensagem;
+        resposta.appendChild(div);
+
+        if (data.status === "sucesso") {
+          form.reset();
+        }
+
+        setTimeout(() => {
+          div.remove();
+        }, 5000);
+      })
+      .catch(() => {
+        const div = document.createElement("div");
+        div.classList.add("alert", "alert-erro");
+        div.textContent = "Erro ao conectar com o servidor.";
+        resposta.appendChild(div);
+
+        setTimeout(() => {
+          div.remove();
+        }, 5000);
+      });
+    });
+  </script>
+
+  <script src="frontend.js"></script>
+</body>
+</html>

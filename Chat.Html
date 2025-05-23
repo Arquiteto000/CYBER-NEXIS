@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Canal Secreto - CyberNexis</title>
+  <link rel="stylesheet" href="Styles.css">
+  <style>
+    body {
+      background-color: black;
+      color: red;
+      font-family: "Courier New", monospace;
+      margin: 0;
+      padding: 0;
+    }
+
+    #chat-container {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 20px;
+      background-color: #111;
+      border: 2px solid red;
+      border-radius: 10px;
+      box-shadow: 0 0 20px red;
+    }
+
+    h2 {
+      text-align: center;
+      color: red;
+      text-shadow: 0 0 5px red;
+    }
+
+    #chat-log {
+      height: 300px;
+      overflow-y: auto;
+      background-color: black;
+      padding: 10px;
+      border: 1px solid red;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .arquiteto {
+      color: red;
+      font-weight: bold;
+      text-shadow: 0 0 5px red;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border-radius: 5px;
+      border: none;
+      background-color: #000;
+      color: red;
+      font-family: monospace;
+      font-size: 16px;
+    }
+
+    input:focus {
+      outline: none;
+      background-color: #111;
+    }
+
+    #senha-container {
+      background-color: black;
+      color: red;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-family: monospace;
+    }
+
+    #senha-container input {
+      background: #222;
+      border: 1px solid red;
+      padding: 10px;
+      color: red;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    #senha-container button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: red;
+      color: black;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    #senha-container button:hover {
+      background: darkred;
+    }
+  </style>
+</head>
+<body>
+
+<div id="senha-container">
+  <h1>ACESSO RESTRITO</h1>
+  <p>Digite a senha para continuar</p>
+  <input type="password" id="senha">
+  <button onclick="verificarSenha()">Entrar</button>
+</div>
+
+<div id="chat-container" style="display:none;">
+  <h2>Canal de Comunicação Secreta</h2>
+  <div id="chat-log"></div>
+  <input id="codinome" type="text" placeholder="Digite seu codinome">
+  <input id="chat-input" type="text" placeholder="Digite sua mensagem">
+</div>
+
+<!-- Mantenha o restante do seu HTML como está até o <script> -->
+<script>
+  const senhaHash = "a121e72683dfc6a372fc90ac5289c561e5fd94d8c8d65f176a1bfa8473f1f370"; // SHA-256 de "Death1410"
+
+  async function verificarSenha() {
+    const senha = document.getElementById("senha").value;
+    const senhaCriptografada = await gerarHashSHA256(senha);
+
+    if (senhaCriptografada === senhaHash) {
+      document.getElementById("senha-container").style.display = "none";
+      document.getElementById("chat-container").style.display = "block";
+    } else {
+      alert("Senha incorreta!");
+    }
+  }
+
+  async function gerarHashSHA256(mensagem) {
+    const encoder = new TextEncoder();
+    const dados = encoder.encode(mensagem);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", dados);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  const chatLog = document.getElementById("chat-log");
+  const input = document.getElementById("chat-input");
+  const codinomeInput = document.getElementById("codinome");
+
+  input.addEventListener("keydown", e => {
+    if (e.key === "Enter" && input.value.trim() !== "") {
+      const codinome = codinomeInput.value.trim() || "Desconhecido";
+      const isArquiteto = codinome.toLowerCase() === "arquiteto";
+      const classe = isArquiteto ? "arquiteto" : "";
+      const msg = `<div><span class="${classe}">[${codinome}]</span>: ${input.value}</div>`;
+      chatLog.innerHTML += msg;
+      input.value = "";
+      chatLog.scrollTop = chatLog.scrollHeight;
+
+      setTimeout(() => {
+        chatLog.innerHTML += `<div>[Agente-X]: Mensagem recebida. Operação confirmada.</div>`;
+        chatLog.scrollTop = chatLog.scrollHeight;
+      }, 1500);
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cyber-Nexis - Recrutamento Secreto</title>
+  <style>
+  </style>
+  <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init('service_sh17aco'); // coloque seu User ID aqui
+    })();
+
+    function enviarEmail(event) {
+      event.preventDefault();
+
+      emailjs.sendForm('service_sh17aco', event.target)
+        .then(() => {
+          alert('Formulário enviado com sucesso!');
+          event.target.reset(); // limpa o formulário
+        }, (error) => {
+          alert('Erro ao enviar o formulário: ' + JSON.stringify(error));
+        });
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <img src="Imagem/Logotipo.jpg" alt="Cyber-Nexis Logo" class="logo" />
+    <h1>RECRUTAMENTO</h1>
+    <h2>Cyber-Nexis</h2>
+    <form onsubmit="enviarEmail(event)">
+      <label for="codinome">Codinome:</label>
+      <input type="text" id="codinome" name="codinome" required />
+
+      <label for="especialidade">Especialidade:</label>
+      <select id="especialidade" name="especialidade" required>
+        <option value="inteligencia">Inteligência Cibernética</option>
+        <option value="seguranca">Segurança da Informação</option>
+        <option value="hacker">Hacker Avançado</option>
+        <option value="engenharia">Engenharia Social</option>
+        <option value="analise">Análise de Dados</option>
+      </select>
+
+      <label for="experiencia">Experiência anterior (resumo):</label>
+      <textarea id="experiencia" name="experiencia" rows="4" required></textarea>
+
+      <label for="motivacao">Por que deseja fazer parte da Cyber-Nexis?</label>
+      <textarea id="motivacao" name="motivacao" rows="4" required></textarea>
+
+      <label for="contato">Forma de Contato (e-mail anônimo ou forma segura):</label>
+      <input type="text" id="contato" name="contato" required />
+
+      <button type="submit">Enviar</button>
+    </form>
+    <div class="footer">
+      Cyber-Nexis &copy; 2025 — Segurança, Discrição e Inteligência
+    </div>
+  </div>
+</body>
+</html>

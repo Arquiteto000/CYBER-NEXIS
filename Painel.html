@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel do Líder - Cyber-Nexis</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+    }
+    #senha-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    #senha-container h2 {
+      color: #f00;
+      margin-bottom: 20px;
+    }
+    #senha-input {
+      padding: 10px;
+      font-size: 18px;
+      background-color: #111;
+      border: 1px solid #f00;
+      color: #fff;
+      border-radius: 5px;
+      width: 250px;
+      text-align: center;
+    }
+    #senha-container button {
+      margin-top: 10px;
+      background-color: #f00;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    #painel {
+      display: none;
+      padding: 20px;
+    }
+    .bloco {
+      background-color: #111;
+      border: 1px solid #f00;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px 0;
+    }
+    .ia-box {
+      background-color: #111;
+      border: 1px solid #f00;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+    .ia-box input {
+      width: 100%;
+      padding: 10px;
+      background-color: #222;
+      color: #fff;
+      border: 1px solid #f00;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .ia-box button {
+      background-color: #f00;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .ia-box p {
+      margin-top: 10px;
+      color: #0f0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Tela de senha -->
+  <div id="senha-container">
+    <h2>Acesso Exclusivo ao Líder</h2>
+    <input type="password" id="senha-input" placeholder="Digite a senha" />
+    <button onclick="verificarSenha()">Entrar</button>
+  </div>
+
+  <!-- Conteúdo do Painel do Líder -->
+  <div id="painel">
+    <h1>Painel do Líder - Cyber-Nexis</h1>
+
+    <div class="bloco">
+      <h2>Status da Organização</h2>
+      <p>Você está no comando total. Nenhuma ameaça detectada no momento.</p>
+    </div>
+
+    <div class="bloco">
+      <h2>Próxima Missão</h2>
+      <p>Monitorar possíveis recrutas, revisar protocolos de segurança e analisar a movimentação online de alvos.</p>
+    </div>
+
+    <div class="bloco">
+      <h2>Planejamento Futuro</h2>
+      <ul>
+        <li>Integrar com banco de dados seguro (criptografado)</li>
+        <li>Salvar respostas e logs das interações com a IA</li>
+        <li>Gerenciar relatórios de missões</li>
+        <li>Adicionar login com autenticação de múltiplos fatores</li>
+      </ul>
+    </div>
+
+    <div class="ia-box">
+      <h2>IA de Suporte ao Líder</h2>
+      <input type="text" id="pergunta" placeholder="Digite sua pergunta...">
+      <button onclick="responderIA()">Perguntar</button>
+      <p id="respostaIA"></p>
+    </div>
+  </div>
+
+  <script>
+    async function sha256(message) {
+      const msgBuffer = new TextEncoder().encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      return hashHex;
+    }
+
+    async function verificarSenha() {
+      const senha = document.getElementById('senha-input').value;
+      const hashCorreto = "a0340ac1e1e226637a6357d1d896f6d1b3b0f82f4f3b2c59c3154a6fa31064a4";
+      const hashDigitada = await sha256(senha);
+      if (hashDigitada === hashCorreto) {
+        document.getElementById('senha-container').style.display = 'none';
+        document.getElementById('painel').style.display = 'block';
+      } else {
+        alert("Senha incorreta!");
+      }
+    }
+
+    function responderIA() {
+      const pergunta = document.getElementById("pergunta").value.toLowerCase();
+      const resposta = document.getElementById("respostaIA");
+
+      const respostas = {
+        missao: "Sua próxima missão é observar o ambiente digital e identificar oportunidades de recrutamento.",
+        ameaça: "Até o momento, nenhum sinal de ameaça detectada. Continue monitorando.",
+        status: "A organização está estável. Todos os sistemas estão operacionais.",
+        progresso: "O progresso atual está alinhado com os planos estratégicos da Cyber-Nexis.",
+        inteligencia: "A Divisão de Inteligência recomenda reforço no rastreio de fontes públicas e privadas.",
+        recrutamento: "Analise os formulários recebidos, identifique habilidades únicas e inicie o processo seletivo oculto.",
+        segurança: "Revisar firewalls, redes internas e protocolos de autenticação imediatamente.",
+        criptografia: "Todos os dados sensíveis estão criptografados com algoritmos de última geração."
+      };
+
+      let encontrada = false;
+      for (const chave in respostas) {
+        if (pergunta.includes(chave)) {
+          resposta.innerText = respostas[chave];
+          encontrada = true;
+          break;
+        }
+      }
+
+      if (!encontrada) {
+        resposta.innerText = "Comando não reconhecido. Reescreva ou consulte o manual do líder.";
+      }
+    }
+  </script>
+</body>
+</html>
