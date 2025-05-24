@@ -4,7 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teste de Talento em Tecnologia - Cyber-Nexis</title>
-    <link rel="stylesheet" href="Styles.css">
+    <style>
+        body {
+            background-color: #0f0f0f;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #121212;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #00ff00;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        header p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+        }
+        main {
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #00ff00;
+        }
+        h2, h3 {
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        label {
+            cursor: pointer;
+        }
+        button {
+            background-color: #00ff00;
+            color: #0f0f0f;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #00cc00;
+        }
+        #timer {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .step-feedback {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        #quiz-feedback {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -16,17 +87,19 @@
             <h2>Descubra seu Talento em Tecnologia!</h2>
             <div id="timer">Tempo restante: <span id="time"></span></div>
             <form id="quiz-form">
+
+                <!-- Etapa 1 -->
                 <div class="step" id="step1">
                     <h3>Etapa 1</h3>
                     <div class="question">
-                        <p>Pergunta 1: Qual é o principal protocolo de comunicação da internet?</p>
+                        <p>1. Qual é o principal protocolo de comunicação da internet?</p>
                         <input type="radio" id="q1a" name="q1" value="a"><label for="q1a">HTTP</label><br>
                         <input type="radio" id="q1b" name="q1" value="b"><label for="q1b">TCP/IP</label><br>
                         <input type="radio" id="q1c" name="q1" value="c"><label for="q1c">FTP</label><br>
                         <input type="radio" id="q1d" name="q1" value="d"><label for="q1d">SMTP</label>
                     </div>
                     <div class="question">
-                        <p>Pergunta 2: Qual é a linguagem de programação mais utilizada para desenvolvimento web?</p>
+                        <p>2. Qual é a linguagem de programação mais utilizada para desenvolvimento web?</p>
                         <input type="radio" id="q2a" name="q2" value="a"><label for="q2a">Python</label><br>
                         <input type="radio" id="q2b" name="q2" value="b"><label for="q2b">JavaScript</label><br>
                         <input type="radio" id="q2c" name="q2" value="c"><label for="q2c">Java</label><br>
@@ -35,17 +108,19 @@
                     <button type="button" class="next-step">Próximo</button>
                     <div class="step-feedback"></div>
                 </div>
+
+                <!-- Etapa 2 -->
                 <div class="step" id="step2" style="display: none;">
                     <h3>Etapa 2</h3>
                     <div class="question">
-                        <p>Pergunta 3: O que é um firewall?</p>
+                        <p>3. O que é um firewall?</p>
                         <input type="radio" id="q3a" name="q3" value="a"><label for="q3a">Um dispositivo que protege contra incêndios</label><br>
                         <input type="radio" id="q3b" name="q3" value="b"><label for="q3b">Um sistema de segurança que monitora e controla o tráfego de rede</label><br>
                         <input type="radio" id="q3c" name="q3" value="c"><label for="q3c">Um software para edição de imagens</label><br>
                         <input type="radio" id="q3d" name="q3" value="d"><label for="q3d">Um dispositivo para proteger contra hackers</label>
                     </div>
                     <div class="question">
-                        <p>Pergunta 4: Qual é a função principal do DNS?</p>
+                        <p>4. Qual é a função principal do DNS?</p>
                         <input type="radio" id="q4a" name="q4" value="a"><label for="q4a">Converter nomes de domínio em endereços IP</label><br>
                         <input type="radio" id="q4b" name="q4" value="b"><label for="q4b">Fornecer conexão à internet</label><br>
                         <input type="radio" id="q4c" name="q4" value="c"><label for="q4c">Proteger contra ataques DDoS</label><br>
@@ -55,17 +130,19 @@
                     <button type="button" class="next-step">Próximo</button>
                     <div class="step-feedback"></div>
                 </div>
+
+                <!-- Etapa 3 -->
                 <div class="step" id="step3" style="display: none;">
                     <h3>Etapa 3</h3>
                     <div class="question">
-                        <p>Pergunta 5: O que é um endereço IP?</p>
+                        <p>5. O que é um endereço IP?</p>
                         <input type="radio" id="q5a" name="q5" value="a"><label for="q5a">Um protocolo de rede</label><br>
                         <input type="radio" id="q5b" name="q5" value="b"><label for="q5b">Um endereço único atribuído a cada dispositivo conectado à rede</label><br>
                         <input type="radio" id="q5c" name="q5" value="c"><label for="q5c">Um tipo de firewall</label><br>
                         <input type="radio" id="q5d" name="q5" value="d"><label for="q5d">Um software de segurança</label>
                     </div>
                     <div class="question">
-                        <p>Pergunta 6: Qual é a principal função de um servidor web?</p>
+                        <p>6. Qual é a principal função de um servidor web?</p>
                         <input type="radio" id="q6a" name="q6" value="a"><label for="q6a">Armazenar arquivos</label><br>
                         <input type="radio" id="q6b" name="q6" value="b"><label for="q6b">Enviar e receber e-mails</label><br>
                         <input type="radio" id="q6c" name="q6" value="c"><label for="q6c">Servir conteúdo da web para os usuários</label><br>
@@ -75,10 +152,124 @@
                     <button type="button" class="next-step">Próximo</button>
                     <div class="step-feedback"></div>
                 </div>
+
+                <!-- Etapa 4 -->
                 <div class="step" id="step4" style="display: none;">
                     <h3>Etapa 4</h3>
                     <div class="question">
-                        <p>Pergunta 7: Qual a função do HTTPS em um site?</p>
-                        <input type="radio" id="q7a" name="q7" value="a"><label for="q7a">Aumentar a velocidade de carregamento do site</label><br>
+                        <p>7. Qual a função do HTTPS em um site?</p>
+                        <input type="radio" id="q7a" name="q7" value="a"><label for="q7a">Aumentar a velocidade do site</label><br>
                         <input type="radio" id="q7b" name="q7" value="b"><label for="q7b">Criptografar a comunicação entre o navegador e o servidor</label><br>
-                        <input type="radio" id="q7c" name="q7" value="c"><label
+                        <input type="radio" id="q7c" name="q7" value="c"><label for="q7c">Armazenar dados do usuário</label><br>
+                        <input type="radio" id="q7d" name="q7" value="d"><label for="q7d">Evitar pop-ups</label>
+                    </div>
+                    <div class="question">
+                        <p>8. Qual é a linguagem de marcação usada para criar páginas web?</p>
+                        <input type="radio" id="q8a" name="q8" value="a"><label for="q8a">Python</label><br>
+                        <input type="radio" id="q8b" name="q8" value="b"><label for="q8b">Java</label><br>
+                        <input type="radio" id="q8c" name="q8" value="c"><label for="q8c">HTML</label><br>
+                        <input type="radio" id="q8d" name="q8" value="d"><label for="q8d">C++</label>
+                    </div>
+                    <button type="button" class="prev-step">Anterior</button>
+                    <button type="submit">Finalizar</button>
+                    <div class="step-feedback"></div>
+                </div>
+            </form>
+            <div id="quiz-feedback"></div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const quizForm = document.getElementById('quiz-form');
+            const steps = document.querySelectorAll('.step');
+            const timerDisplay = document.getElementById('time');
+            const quizFeedback = document.getElementById('quiz-feedback');
+            let currentStep = 0;
+            let timeLeft = 300;
+            let timerInterval;
+
+            const correctAnswers = {
+                q1: 'b',
+                q2: 'b',
+                q3: 'b',
+                q4: 'a',
+                q5: 'b',
+                q6: 'c',
+                q7: 'b',
+                q8: 'c'
+            };
+
+            function showStep(stepIndex) {
+                steps.forEach((step, index) => {
+                    step.style.display = index === stepIndex ? 'block' : 'none';
+                });
+            }
+
+            function startTimer() {
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    const minutes = Math.floor(timeLeft / 60);
+                    const seconds = timeLeft % 60;
+                    timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        showResults();
+                    }
+                }, 1000);
+            }
+
+            function checkAnswer(questionNumber, selectedAnswer) {
+                return correctAnswers[questionNumber] === selectedAnswer;
+            }
+
+            function showFeedback(stepIndex, isCorrect) {
+                const feedbackElement = steps[stepIndex].querySelector('.step-feedback');
+                feedbackElement.textContent = isCorrect ? 'Resposta correta!' : 'Resposta incorreta.';
+                feedbackElement.style.color = isCorrect ? 'lime' : 'red';
+            }
+
+            function calculateResults() {
+                let score = 0;
+                for (let i = 1; i <= 8; i++) {
+                    const selectedAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+                    if (selectedAnswer && checkAnswer(`q${i}`, selectedAnswer.value)) {
+                        score++;
+                    }
+                }
+                return score;
+            }
+
+            function showResults() {
+                clearInterval(timerInterval);
+                const score = calculateResults();
+                quizFeedback.textContent = `Você acertou ${score} de 8 perguntas.`;
+                quizFeedback.style.display = 'block';
+                quizForm.style.display = 'none';
+            }
+
+            showStep(currentStep);
+            startTimer();
+
+            quizForm.addEventListener('click', (event) => {
+                if (event.target.classList.contains('next-step')) {
+                    const selectedAnswer = document.querySelector(`input[name="q${(currentStep * 2) + 1}"]:checked`);
+                    const selectedAnswer2 = document.querySelector(`input[name="q${(currentStep * 2) + 2}"]:checked`);
+                    if (selectedAnswer && selectedAnswer2) {
+                        showStep(++currentStep);
+                    } else {
+                        alert('Responda todas as perguntas desta etapa antes de continuar.');
+                    }
+                } else if (event.target.classList.contains('prev-step')) {
+                    showStep(--currentStep);
+                }
+            });
+
+            quizForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                showResults();
+            });
+        });
+    </script>
+</body>
+</html>
