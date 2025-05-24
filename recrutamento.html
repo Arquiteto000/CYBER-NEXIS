@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <link rel="stylesheet" href="styles.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cyber-Nexis - Recrutamento Secreto</title>
-  <style>
-  </style>
+
+  <!-- Conectando ao CSS externo -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Biblioteca EmailJS -->
   <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
   <script>
-    (function(){
-      emailjs.init('service_sh17aco'); // coloque seu User ID aqui
+    (function() {
+      emailjs.init('SEU_USER_ID_AQUI'); // Substitua pelo seu User ID
     })();
 
     function enviarEmail(event) {
       event.preventDefault();
 
-      emailjs.sendForm('service_sh17aco', event.target)
+      emailjs.sendForm('SEU_SERVICE_ID', 'SEU_TEMPLATE_ID', event.target)
         .then(() => {
           alert('Formulário enviado com sucesso!');
-          event.target.reset(); // limpa o formulário
+          event.target.reset();
         }, (error) => {
           alert('Erro ao enviar o formulário: ' + JSON.stringify(error));
         });
     }
   </script>
 </head>
+
 <body>
   <div class="container">
     <img src="Imagem/Logotipo.jpg" alt="Cyber-Nexis Logo" class="logo" />
+
     <h1>RECRUTAMENTO</h1>
     <h2>Cyber-Nexis</h2>
+
     <form onsubmit="enviarEmail(event)">
       <label for="codinome">Codinome:</label>
-      <input type="text" id="codinome" name="codinome" required />
+      <input type="text" id="codinome" name="codinome" placeholder="Seu codinome..." required />
 
       <label for="especialidade">Especialidade:</label>
       <select id="especialidade" name="especialidade" required>
@@ -45,16 +50,17 @@
       </select>
 
       <label for="experiencia">Experiência anterior (resumo):</label>
-      <textarea id="experiencia" name="experiencia" rows="4" required></textarea>
+      <textarea id="experiencia" name="experiencia" rows="4" placeholder="Descreva sua experiência..." required></textarea>
 
       <label for="motivacao">Por que deseja fazer parte da Cyber-Nexis?</label>
-      <textarea id="motivacao" name="motivacao" rows="4" required></textarea>
+      <textarea id="motivacao" name="motivacao" rows="4" placeholder="Fale sobre sua motivação..." required></textarea>
 
-      <label for="contato">Forma de Contato (e-mail anônimo ou forma segura):</label>
-      <input type="text" id="contato" name="contato" required />
+      <label for="contato">Forma de Contato (e-mail anônimo ou seguro):</label>
+      <input type="text" id="contato" name="contato" placeholder="Seu contato seguro..." required />
 
       <button type="submit">Enviar</button>
     </form>
+
     <div class="footer">
       Cyber-Nexis &copy; 2025 — Segurança, Discrição e Inteligência
     </div>
